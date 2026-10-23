@@ -30,6 +30,9 @@ SMART_ROUTER_RECIPE_HEADER = "Databricks-Smart-Router-Recipe"
 # reads the env var lives in ``ucode.agents.request_tags`` (it needs ``ui``).
 AI_GATEWAY_REQUEST_TAGS_HEADER = "Databricks-Ai-Gateway-Request-Tags"
 AI_GATEWAY_REQUEST_TAGS_ENV_VAR = "AI_GATEWAY_REQUEST_TAGS"
+# Project-local default for AI_GATEWAY_REQUEST_TAGS: a JSON object file at this path,
+# relative to the coding agent's working directory, used when the env var is unset.
+AI_GATEWAY_REQUEST_TAGS_PROJECT_FILE = ".ucode/request-tags.json"
 
 
 # MCP server registration scopes. Claude Code supports local/project/user; the

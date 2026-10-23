@@ -115,6 +115,27 @@ ug removes its shared reference on discovery/validation failure, reconfiguration
 revert, or before installing/updating Codex. After an update, run `ug codex` to refresh
 discovery or `ug configure` for a managed static list, then restart the app server.
 
+### Request Tags
+
+Claude Code, Codex, Pi, opencode, and Copilot send a `Databricks-Ai-Gateway-Request-Tags`
+header on every gateway request so the gateway can attribute inference calls, for example to a
+project. Set `AI_GATEWAY_REQUEST_TAGS` to a single-line JSON object before launching an agent to
+set it explicitly for that session:
+
+```bash
+AI_GATEWAY_REQUEST_TAGS='{"project":"p-1042"}' ug claude
+```
+
+Without that env var, `ug` falls back to a project default: a `.ucode/request-tags.json` file in
+the directory you launch the agent from, holding the same JSON object (pretty-printed or not):
+
+```json
+{ "project": "p-1042" }
+```
+
+Commit that file to the project's repo so every teammate's sessions from that checkout carry the
+same tags.
+
 ## Configure
 
 ```bash
